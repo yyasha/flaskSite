@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Главная страница
+{% endblock %}
+
+{% block body %}
+<style>
+    html {
+      font-family: Helvetica;
+      display: inline-block;
+      margin: 0px auto;
+      text-align: center;
+      /*background-color: #2C2A2A;*/
+    }
+    ul {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    border-radius: 10px;
+    padding: 20px;
+    width: 100%;
+  }
+  ul li {
+    position: relative;
+    list-style: none;
+    text-align: center;
+    margin: 15px;
+  }
+  ul li label {
+    position: relative;
+  }
+  .table {
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+  }
+  .block {
+  	width: 323px;
+  	min-height: 280px;
+  	background-color: #2FE077;
+  	border-radius: 10px;
+  	margin-right: 3px;
+  	transition: 1.3s;
+  	padding-top: 10px;
+  	margin-bottom: 20px;
+  }
+  .text {
+  	color: white;
+  	font-size: 35px;
+  	font-family: Marker Felt, fantasy;
+  }
+
+  .superLink {
+    text-decoration:none;
+  }
+
+  .superLink:hover {
+  	text-decoration:none;
+  }
+
+  .block:hover {
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+  background: #36FF86;
+}
+
+  </style>
+</head>
+<body>
+  <div class="table">
+    <ul>
+      <li>
+      	<a href="/ledstreep" class="superLink"><div class="block"><img width="304px" height="206px" src="/images/ws2812.jpg">
+      		<div class="text">Управление адресной лентой</div>
+      	</div></a>
+      </li>
+      <li>
+      	<a href="/currencies" class="superLink"><div class="block"><img width="304px" height="206px" src="/images/money.jpg">
+      		<div class="text">Курсы валют</div>
+      	</div></a>
+      </li>
+      <li>
+      	<a href="/weather" class="superLink"><div class="block"><img width="304px" height="206px" src="/images/weather.png">
+      		<div class="text">Погода</div>
+      	</div></a>
+      </li>
+      <li>
+      	<a href="/sound" class="superLink"><div class="block"><img width="304px" height="206px" src="/images/speaker.jpg">
+      		<div class="text">Управление музыкой</div>
+      	</div></a>
+      </li>
+      <li>
+      	<a href="/ledstreep" class="superLink"><div class="block"><img width="304px" height="206px" src="/images/ws2812.jpg">
+      		<div class="text">Управление адресной лентой</div>
+      	</div></a>
+      </li>
+      <li>
+      	<a href="/ledstreep" class="superLink"><div class="block"><img width="304px" height="206px" src="/images/ws2812.jpg">
+      		<div class="text">Управление адресной лентой</div>
+      	</div></a>
+      </li>
+    </ul>
+  </div>
+{% endblock %}

@@ -1,0 +1,203 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Светодиодня лента
+{% endblock %}
+
+{% block body %}
+
+		<style>
+		.btnTable {
+    		display: flex;
+    		justify-content: center;
+    		min-height: 100vh;
+  		}
+  		.btn {
+  			height: 100px;
+  			width: 200px;
+  			border-radius: 20px;
+  		}
+  		.btn2 {
+  			height: 100px;
+  			width: 300px;
+  			border-radius: 20px;
+  		}
+  		.btn3 {
+  			height: 100px;
+  			width: 500px;
+  			border-radius: 20px;
+  		}
+  		ul {
+		    position: relative;
+		    display: flex;
+		    justify-content: center;
+		    align-items: center;
+		    flex-wrap: wrap;
+		    border-radius: 10px;
+		    padding: 20px;
+		    width: 770px;
+		    box-shadow: -2px -2px 5px rgba(0,0,0,0.5),
+		                3px 3px 5px rgba(0,0,0,0.07);
+		}
+
+		ul li {
+		    position: relative;
+		    list-style: none;
+		    text-align: center;
+		    margin: 15px;
+		}
+
+		ul li label {
+		    position: relative;
+		}
+
+		#output {
+			margin-top: 10px;
+			text-align: center;
+		}
+		</style>
+
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
+    <script>
+  //   	window.onload = function () {
+		// 	output = document.getElementById('output');
+			
+		// 	socket = io.connect('ws://' + document.domain + ':' + location.port);
+		// 	socket.on('connect', function() {
+		// 		setInterval(function() {
+		// 			socket.emit('message', {'request': '...'});
+		// 		}, 100);
+		// 	});
+		// 	socket.on('request', function(message) {
+		// 		output.innerHTML = message;
+		// 	});
+		// }
+
+		var mode0 = function(){
+				var xhr = new XMLHttpRequest();
+				xhr.open('GET', 'mode0', true);
+				xhr.send();
+			}
+			var mode1 = function(){
+				var xhr = new XMLHttpRequest();
+				xhr.open('GET', 'mode1', true);
+				xhr.send();
+			}
+			var mode2 = function(){
+				var xhr = new XMLHttpRequest();
+				xhr.open('GET', 'mode2', true);
+				xhr.send();
+			}
+			var mode3 = function(){
+				var xhr = new XMLHttpRequest();
+				xhr.open('GET', 'mode3', true);
+				xhr.send();
+			}
+			var mode5 = function(){
+				var xhr = new XMLHttpRequest();
+				xhr.open('GET', 'mode5', true);
+				xhr.send();
+			}
+			var mode11 = function(){
+				var xhr = new XMLHttpRequest();
+				xhr.open('GET', 'mode11', true);
+				xhr.send();
+			}
+			var mode12 = function(){
+				var xhr = new XMLHttpRequest();
+				xhr.open('GET', 'mode12', true);
+				xhr.send();
+			}
+			var mode13 = function(){
+				var xhr = new XMLHttpRequest();
+				xhr.open('GET', 'mode13', true);
+				xhr.send();
+			}
+			var mode14 = function(){
+				var xhr = new XMLHttpRequest();
+				xhr.open('GET', 'mode14', true);
+				xhr.send();
+			}
+			var mode15 = function(){
+				var xhr = new XMLHttpRequest();
+				xhr.open('GET', 'mode15', true);
+				xhr.send();
+			}
+			var mode16 = function(){
+				var xhr = new XMLHttpRequest();
+				xhr.open('GET', 'mode16', true);
+				xhr.send();
+			}
+			var mode17 = function(){
+				var xhr = new XMLHttpRequest();
+				xhr.open('GET', 'mode17', true);
+				xhr.send();
+			}
+			var mode18 = function(){
+				var xhr = new XMLHttpRequest();
+				xhr.open('GET', 'mode18', true);
+				xhr.send();
+			}
+			var mode19 = function(){
+				var xhr = new XMLHttpRequest();
+				xhr.open('GET', 'mode19', true);
+				xhr.send();
+			}
+			var mode20 = function(){
+				var xhr = new XMLHttpRequest();
+				xhr.open('GET', 'mode20', true);
+				xhr.send();
+			}
+		</script>
+
+		<div class="btnTable">
+    <ul>
+      <li>
+        <button class="btn btn-success btn3" onclick="mode0()" id="button">Выключить</button>
+      </li>
+      <li>
+        <button class="btn btn-success" onclick="mode1()" id="button">Режим 1</button>
+      </li>
+      <li>
+        <button class="btn btn-success" onclick="mode2()" id="button">Режим 2</button>
+      </li>
+      <li>
+        <button class="btn btn-success" onclick="mode3()" id="button">Режим 3</button>
+      </li>
+      <li>
+        <button class="btn btn-success btn2" onclick="mode18()" id="button">← Смена цвета</button>
+      </li>
+      <li>
+        <button class="btn btn-success btn2" onclick="mode17()" id="button">Смена цвета →</button>
+      </li>
+      <li>
+        <button class="btn btn-success btn2" onclick="mode11()" id="button">Прибавить яркость</button>
+      </li>
+      <li>
+        <button class="btn btn-success btn2" onclick="mode12()" id="button">Убавить яркость</button>
+      </li>
+      <li>
+        <button class="btn btn-success btn2" onclick="mode13()" id="button">Максимальная яркость</button>
+      </li>
+      <li>
+        <button class="btn btn-success btn2" onclick="mode14()" id="button">Минимальная яркость</button>
+      </li>
+      <li>
+        <button class="btn btn-success btn2" onclick="mode15()" id="button">Прибавить скорость</button>
+      </li>
+      <li>
+        <button class="btn btn-success btn2" onclick="mode16()" id="button">Убавить скорость</button>
+      </li>
+      <li>
+        <button class="btn btn-success btn2" onclick="mode19()" id="button">Прибавить шаг</button>
+      </li>
+      <li>
+        <button class="btn btn-success btn2" onclick="mode20()" id="button">Убавить шаг</button>
+      </li>
+      <li>
+        <button class="btn btn-success btn3" onclick="mode5()" id="button">Демонстационный режим</button>
+      </li>
+    </ul>
+  </div>
+<!--   <div id="output"></div> -->
+{% endblock %}

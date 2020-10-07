@@ -1,0 +1,171 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Погода
+{% endblock %}
+
+{% block body %}
+
+<style>
+    html {
+      font-family: Helvetica;
+      display: inline-block;
+      margin: 0px auto;
+      text-align: center;
+      /*background-color: #2C2A2A;*/
+    }
+    ul {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    border-radius: 10px;
+    padding: 20px;
+    width: 700px;
+  }
+  ul li {
+    position: relative;
+    list-style: none;
+    text-align: center;
+    margin: 15px;
+  }
+  ul li label {
+    position: relative;
+  }
+  .table {
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+  }
+  .table2 {
+    display: flex;
+    justify-content: center;
+    min-height: 30vh;
+  }
+  .block {
+  	width: 323px;
+  	min-height: 280px;
+  	background-color: #2FE077;
+  	border-radius: 10px;
+  	margin-right: 3px;
+  	transition: 1.3s;
+  	padding-top: 10px;
+  	margin-bottom: 20px;
+  }
+  .undertext {
+  	font-size: 35px;
+  	font-family: Marker Felt, fantasy;
+	margin: auto;
+  }
+
+.image {
+	position: relative;
+}
+
+.cloud {
+	position: absolute;
+	top: 100px;
+	left: 0;
+	width: 280px;
+	font-weight: bold;
+	font-size: 35px;
+	color: #383856;
+}
+
+.windcloud {
+	position: absolute;
+	top: 50px;
+	left: 0;
+	width: 280px;
+	font-weight: bold;
+	font-size: 35px;
+	color: #383856;
+}
+.textwhite {
+	color: white;
+}
+
+  </style>
+
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
+    <script>
+	window.onload = function () {
+			temp = document.getElementById('temp');
+			feels = document.getElementById('feels');
+			humidity = document.getElementById('humidity');
+			windSpeed = document.getElementById('windSpeed');
+			cloudsG = document.getElementById('cloudsG');
+			rainG = document.getElementById('rainG');
+			snowG = document.getElementById('snowG');
+			
+			socket = io.connect('ws://' + document.domain + ':' + location.port);
+			socket.on('connect', function() {
+				setInterval(function() {
+					socket.emit('weather', {'temperature': '...'});
+					socket.emit('weather', {'feels': '...'});
+					socket.emit('weather', {'humidity': '...'});
+					socket.emit('weather', {'wind': '...'});
+					socket.emit('weather', {'clouds': '...'});
+					socket.emit('weather', {'rain': '...'});
+					socket.emit('weather', {'snow': '...'});
+				}, 100);
+			});
+			socket.on('temperature', function(message) {
+				temp.innerHTML = message;
+			});
+			socket.on('feels', function(message) {
+				feels.innerHTML = message;
+			});
+			socket.on('humidity', function(message) {
+				humidity.innerHTML = message;
+			});
+			socket.on('wind', function(message) {
+				windSpeed.innerHTML = message;
+			});
+			socket.on('clouds', function(message) {
+				cloudsG.innerHTML = message;
+			});
+			socket.on('rain', function(message) {
+				rainG.innerHTML = message;
+			});
+			socket.on('snow', function(message) {
+				snowG.innerHTML = message;
+			});
+		}
+	</script>
+
+<div class="table2">
+    <ul>
+      <li>
+      		<div class="undertext">Температура</div>
+      		<div class="undertext" id="temp">&nbsp;</div>
+      </li>
+      <li>
+      		<div class="undertext">Ощущается</div>
+      		<div class="undertext" id="feels">&nbsp;</div>
+      </li>
+      <li>
+      		<div class="undertext">Влажность</div>
+      		<div class="undertext" id="humidity">&nbsp;</div>
+      </li>
+    </ul>
+ </div>
+
+<div class="table">
+    <ul>
+      <li>
+      		<div class="image"><img src="/images/icon_cloud.png" width="280px" height="280px"><div class="cloud" id="cloudsG">&nbsp;</div></div>
+      </li>
+      <li>
+      		<div class="image"><img width="280px" height="280px" src="/images/icon_wind.png"><div class="windcloud" id="windSpeed">&nbsp;</div></div>
+      </li>
+      <li>
+      		<div class="image"><img width="280px" height="280px" src="/images/icon_rain.png"><div class="cloud textwhite" id="rainG">&nbsp;</div></div>
+      </li>
+      <li>
+      		<div class="image"><img width="280px" height="280px" src="/images/icon_snow.png"><div class="cloud textwhite" id="snowG">&nbsp;</div></div>
+      </li>
+    </ul>
+  </div>
+{% endblock %}

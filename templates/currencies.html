@@ -1,0 +1,232 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Курсы валют
+{% endblock %}
+
+{% block body %}
+<style>
+    html {
+      font-family: Helvetica;
+      display: inline-block;
+      margin: 0px auto;
+      text-align: center;
+    }
+    ul {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    border-radius: 10px;
+    padding: 20px;
+    width: 600px;
+    height: 50px;
+  }
+  ul li {
+    position: relative;
+    list-style: none;
+    text-align: center;
+    margin: 15px;
+  }
+  ul li label {
+    position: relative;
+  }
+  .table {
+    display: flex;
+    justify-content: center;
+    height: 200px;
+  }
+  .table2 {
+    display: flex;
+    justify-content: center;
+    height: 760px;
+  }
+
+.header {
+  font-size: 35px;
+}
+
+.value {
+ font-size: 35px;
+ font-weight: bold;
+ color: #3FBF4C;
+}
+
+  </style>
+
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
+    <script>
+    	window.onload = function () {
+			usdrub = document.getElementById('usdrub');
+			eurrub = document.getElementById('eurrub');
+      audrub = document.getElementById('audrub');
+      gbprub = document.getElementById('gbprub');
+      bynrub = document.getElementById('bynrub');
+      hkdrub = document.getElementById('hkdrub');
+      kztrub = document.getElementById('kztrub');
+      cadrub = document.getElementById('cadrub');
+      cnyrub = document.getElementById('cnyrub');
+      nokrub = document.getElementById('nokrub');
+      sgdrub = document.getElementById('sgdrub');
+      tryrub = document.getElementById('tryrub');
+      uahrub = document.getElementById('uahrub');
+      czkrub = document.getElementById('czkrub');
+      sekrub = document.getElementById('sekrub');
+      chfrub = document.getElementById('chfrub');
+      jpyrub = document.getElementById('jpyrub');
+			
+			socket = io.connect('ws://' + document.domain + ':' + location.port);
+			socket.on('connect', function() {
+				setInterval(function() {
+					socket.emit('currencies', {'USD': '...'});
+					socket.emit('currencies', {'EUR': '...'});
+          socket.emit('currencies', {'AUD': '...'});
+          socket.emit('currencies', {'GBP': '...'});
+          socket.emit('currencies', {'BYN': '...'});
+          socket.emit('currencies', {'HKD': '...'});
+          socket.emit('currencies', {'KZT': '...'});
+          socket.emit('currencies', {'CAD': '...'});
+          socket.emit('currencies', {'CNY': '...'});
+          socket.emit('currencies', {'NOK': '...'});
+          socket.emit('currencies', {'SGD': '...'});
+          socket.emit('currencies', {'TRY': '...'});
+          socket.emit('currencies', {'UAH': '...'});
+          socket.emit('currencies', {'CZK': '...'});
+          socket.emit('currencies', {'SEK': '...'});
+          socket.emit('currencies', {'CHF': '...'});
+          socket.emit('currencies', {'JPY': '...'});
+				}, 100);
+			});
+			socket.on('USD', function(currencies) {
+				usdrub.innerHTML = currencies;
+			});
+			socket.on('EUR', function(currencies) {
+				eurrub.innerHTML = currencies;
+			});
+      socket.on('AUD', function(currencies) {   
+        audrub.innerHTML = currencies;
+      });
+      socket.on('GBP', function(currencies) {
+        gbprub.innerHTML = currencies;
+      });
+      socket.on('BYN', function(currencies) {
+        bynrub.innerHTML = currencies;
+      });
+      socket.on('HKD', function(currencies) {
+        hkdrub.innerHTML = currencies;
+      });
+      socket.on('KZT', function(currencies) {
+        kztrub.innerHTML = currencies;
+      });
+      socket.on('CAD', function(currencies) {
+        cadrub.innerHTML = currencies;
+      });
+      socket.on('CNY', function(currencies) {
+        cnyrub.innerHTML = currencies;
+      });
+      socket.on('NOK', function(currencies) {
+        nokrub.innerHTML = currencies;
+      });
+      socket.on('SGD', function(currencies) {
+        sgdrub.innerHTML = currencies;
+      });
+      socket.on('TRY', function(currencies) {
+        tryrub.innerHTML = currencies;
+      });
+      socket.on('UAH', function(currencies) {
+        uahrub.innerHTML = currencies;
+      });
+      socket.on('CZK', function(currencies) {
+        czkrub.innerHTML = currencies;
+      });
+      socket.on('SEK', function(currencies) {
+        sekrub.innerHTML = currencies;
+      });
+      socket.on('CHF', function(currencies) {
+        chfrub.innerHTML = currencies;
+      });
+      socket.on('JPY', function(currencies) {
+        jpyrub.innerHTML = currencies;
+      });
+		}
+	</script>
+</head>
+<body>
+  <div class="table">
+    <ul>
+      <li>
+      	<div class="header" title="Доллар США">USD/RUB</div>
+      	<div class="value" id="usdrub">&nbsp;</div>
+      </li>
+      <li>
+      	<div class="header" title="Евро">EUR/RUB</div>
+      	<div class="value" id="eurrub">&nbsp;</div>
+      </li>
+    </ul>
+  </div>
+  <div class="table2">
+    <ul>
+      <li>
+        <div class="header" title="Австралийский доллар">AUD/RUB</div>
+        <div class="value" id="audrub">&nbsp;</div>
+      </li>
+      <li>
+        <div class="header" title="Фунт стерлингов Соединенного королевства">GBP/RUB</div>
+        <div class="value" id="gbprub">&nbsp;</div>
+      </li>
+      <li>
+        <div class="header" title="Белорусский рубль">BYN/RUB</div>
+        <div class="value" id="bynrub">&nbsp;</div>
+      </li>
+      <li>
+        <div class="header" title="Гонконгский доллар">HKD/RUB</div>
+        <div class="value" id="hkdrub">&nbsp;</div>
+      </li>
+      <li>
+        <div class="header" title="Казахстанский тенге">KZT/RUB</div>
+        <div class="value" id="kztrub">&nbsp;</div>
+      </li>
+      <li>
+        <div class="header" title="Канадский доллар">CAD/RUB</div>
+        <div class="value" id="cadrub">&nbsp;</div>
+      </li>
+      <li>
+        <div class="header" title="Китайский юань">CNY/RUB</div>
+        <div class="value" id="cnyrub">&nbsp;</div>
+      </li>
+      <li>
+        <div class="header" title="Норвежских крон">NOK/RUB</div>
+        <div class="value" id="nokrub">&nbsp;</div>
+      </li>
+      <li>
+        <div class="header" title="Сингапурский доллар">SGD/RUB</div>
+        <div class="value" id="sgdrub">&nbsp;</div>
+      </li>
+      <li>
+        <div class="header" title="Турецкая лира">TRY/RUB</div>
+        <div class="value" id="tryrub">&nbsp;</div>
+      </li>
+      <li>
+        <div class="header" title="Украинских гривен">UAH/RUB</div>
+        <div class="value" id="uahrub">&nbsp;</div>
+      </li>
+      <li>
+        <div class="header" title="Чешских крон">CZK/RUB</div>
+        <div class="value" id="czkrub">&nbsp;</div>
+      </li>
+      <li>
+        <div class="header" title="Шведских крон">SEK/RUB</div>
+        <div class="value" id="sekrub">&nbsp;</div>
+      </li>
+      <li>
+        <div class="header" title="Швейцарский франк">CHF/RUB</div>
+        <div class="value" id="chfrub">&nbsp;</div>
+      </li>
+      <li>
+        <div class="header" title="Японских иен">JPY/RUB</div>
+        <div class="value" id="jpyrub">&nbsp;</div>
+      </li>
+    </ul>
+  </div>
+{% endblock %}
