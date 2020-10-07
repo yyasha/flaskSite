@@ -232,7 +232,7 @@ def weatherw():
 			    "lat": "48.704250",
 			    "lon": "44.465634",
 			    "units": "metric",
-			    "appid": "14c937e9b7d6738b5118932fc37c9a1f",
+			    "appid": "YourKey",
 			}
 			res = requests.get(url, params=payload)
 			data = json.loads(res.text)
